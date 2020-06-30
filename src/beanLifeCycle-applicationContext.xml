@@ -10,38 +10,27 @@
 	<!-- load the properties file : sport.properties -->
 	<context:property-placeholder location="classpath:sport.properties" />
 	
-	<!--  mặc định là singleton tức là chỉ có 1 bean ddc tạo ra, mọi tham chiếu đều chiếu tới nó -->
-	
 	
     <!-- Define your beans here -->
-    
+
     <!-- define the dependency -->
-    
-    
     <bean id="myFortuneService"
     		class="com.luv2code.springdemo.HappyFortuneService">
     </bean>
   <!-- HappyFortuneServie myFortuneService = new HappayFortuneService -->
   
-  
-  	<bean id="myCricketCoach"
-  	class="com.luv2code.springdemo.CricketCoach"
-  	>
- 		<!--  Set up setter injection       Tên giống tên setter viết thường chữ đầu sau đó viết hoa -->
-  		<property name = "fortuneService" ref="myFortuneService" />	
-		<!-- inject literal values -->
-		<property name ="emailAddress"  value="${foo.email}"  />
-		<property name ="team"  value="${foo.team}"  />
-  	</bean>
-  	<!-- giong nhu  CricketCoach myCricketCoach = new CricketCoach(myFortuneService) -->
-  	
-  	
-  	
+
+
   	
     <!-- khai bao trong thang my coach co contructor nhan vao thang myFortuneSerive -->
  	<bean id="myCoach"
- 			class="com.luv2code.springdemo.TrackCoach">	 							
+ 			class="com.luv2code.springdemo.TrackCoach"	
+ 			init-method ="doMyStartupStuff"
+ 			destroy-method="doMyCleanupStuffYoYo"
+ 			>	 		
+ 					
  		<constructor-arg ref="myFortuneService"/>
+ 		
  	</bean>
 
     <!--

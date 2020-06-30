@@ -10,6 +10,8 @@
 	<!-- load the properties file : sport.properties -->
 	<context:property-placeholder location="classpath:sport.properties" />
 	
+	<!--  mặc định là singleton tức là chỉ có 1 bean ddc tạo ra, mọi tham chiếu đều chiếu tới nó -->
+	
 	
     <!-- Define your beans here -->
     
