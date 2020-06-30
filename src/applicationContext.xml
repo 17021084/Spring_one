@@ -7,6 +7,9 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- load the properties file : sport.properties -->
+	<context:property-placeholder location="classpath:sport.properties" />
+	
 	
     <!-- Define your beans here -->
     
@@ -25,8 +28,8 @@
  		<!--  Set up setter injection       Tên giống tên setter viết thường chữ đầu sau đó viết hoa -->
   		<property name = "fortuneService" ref="myFortuneService" />	
 		<!-- inject literal values -->
-		<property name ="emailAddress"  value="dotrunghg1999@gmail.com"  />
-		<property name ="team"  value="liverpool fc"  />
+		<property name ="emailAddress"  value="${foo.email}"  />
+		<property name ="team"  value="${foo.team}"  />
   	</bean>
   	<!-- giong nhu  CricketCoach myCricketCoach = new CricketCoach(myFortuneService) -->
   	
